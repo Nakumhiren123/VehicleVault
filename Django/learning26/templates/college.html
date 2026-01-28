@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College</title>
+</head>
+<body>
+
+    <h1>COLLEGE Details...!!!</h1>
+
+    <h2>COLLEGE NAME : {{ CollegeName }}</h2>
+    <h2>Principal Name : {{ PrincipalName }}</h2>
+    <h2>Established Year : {{ EstablishedYear }}</h2>
+
+    <h2>Departments List in the College:</h2>
+    {% for i in departments %}
+        <h3>{{ i }}</h3>
+    {% endfor %}
+    <br>
+
+    <h2>Professors List in the College :</h2>
+    {% for i in professors %}
+        <h3>{{ i }}</h3>
+    {% endfor %}
+    <br>
+
+    <h2>Courses Offered in the College :</h2>
+    {% for i in courses %}
+        <h3>{{ i }}</h3>
+    {% endfor %}
+    <br>
+
+    <h2>Laboratories in the College :</h2>
+    {% for i in labs %}
+        <h3>{{ i }}</h3>
+    {% endfor %}
+    <br>
+
+    <h2>Clubs in the College :</h2>
+    {% for i in clubs %}
+        <h3>{{ i }}</h3>
+    {% endfor %}
+    <br>
+
+    {% if EstablishedYear < 2000 %}
+        <h3>Well Established College</h3>
+    {% else %}
+        <h3>Newly Established College</h3>
+    {% endif %}
+
+</body>
+</html>

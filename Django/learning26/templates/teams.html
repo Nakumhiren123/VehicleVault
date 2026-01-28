@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams</title>
+</head>
+<body>
+    <h1>TEAM Details...!!!</h1>
+    <h2>TEAMNAME : {{TeamName}}</h2>
+    <h2>CaptainName: {{CaptainName}}</h2>
+    <h2>Trophy Win : {{trophy}}</h2>
+    <h2>Wicketkeepers List in the team:</h2>
+    {%for i in Wicketkeeper%}
+        <h3>{{i}}</h3>
+    {%endfor%}
+    </br>
+    <h2>Batters List in the team :</h2>
+    {%for i in batter%}
+        <h3>{{i}}</h3>
+    {%endfor%}
+    </br>
+    <h2>AllRounders List in the team :</h2>
+    {%for i in allrounder%}
+        <h3>{{i}}</h3>
+    {%endfor%}
+    </br>
+    <h2>Bowlers List in the team :</h2>
+    {%for i in bowler%}
+        <h3>{{i}}</h3>
+    {%endfor%}
+    </br>
+    {% if trophy >= 5 %}
+        <h3>Good players present in the Team </h3>
+        {% else %}
+        <h3>Team is not Good</h3>
+    {% endif %}
+
+</body>
+</html>
