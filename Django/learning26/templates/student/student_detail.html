@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Detail</title>
+</head>
+<body style="font-family: Arial; background:#f8f9fa; padding:40px;">
+
+<div style="width:400px; margin:auto; background:white; padding:20px; border-radius:10px;">
+    <h2 style="text-align:center;">Student Detail</h2>
+
+    {% if student %}
+        <p><b>Name:</b> {{ student.name }}</p>
+        <p><b>Course:</b> {{ student.course }}</p>
+        <p><b>Email:</b> {{ student.email }}</p>
+    {% else %}
+        <p style="color:red;">Student not found</p>
+    {% endif %}
+
+    <a href="{% url 'student_list' %}"
+       style="display:block; text-align:center; margin-top:15px; color:#007bff;">
+       Back
+    </a>
+</div>
+
+</body>
+</html>

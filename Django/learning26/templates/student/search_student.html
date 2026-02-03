@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Student</title>
+</head>
+<body style="font-family: Arial; background:#f2f4f7; padding:40px;">
+
+<h2 style="text-align:center;">🔍 Search Student</h2>
+
+<form method="post"
+      style="width:350px; margin:auto; background:white; padding:20px; border-radius:10px;">
+    {% csrf_token %}
+
+    <input type="text" name="name" placeholder="Enter Student Name"
+           style="width:100%; padding:10px; margin-bottom:15px;" required>
+
+    <button type="submit"
+            style="width:100%; padding:10px; background:#28a745; color:white; border:none; border-radius:5px;">
+        Search
+    </button>
+</form>
+
+{% if result %}
+<div style="width:350px; margin:30px auto; background:white; padding:20px; border-radius:10px;">
+    <h3>Student Found</h3>
+    <p><b>Name:</b> {{ result.name }}</p>
+    <p><b>Course:</b> {{ result.course }}</p>
+    <p><b>Email:</b> {{ result.email }}</p>
+</div>
+{% elif result == None and request.method == "POST" %}
+<p style="text-align:center; color:red; margin-top:20px;">
+    Student not found
+</p>
+{% endif %}
+
+</body>
+</html>
