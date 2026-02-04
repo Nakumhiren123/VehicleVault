@@ -26,3 +26,15 @@ class Product(models.Model):
     
     class Meta:
         db_table = "product"
+
+class Customer(models.Model):
+    customerName = models.CharField(max_length=100)
+    customerEmail = models.EmailField(unique=True)
+    customerPhone = models.CharField(max_length=15)
+    customerAddress = models.TextField()
+    customerStatus = models.BooleanField(default=True)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    updatedAt = models.DateTimeField(auto_now=True)
+
+    class Meta:
+       db_table = "customer"
