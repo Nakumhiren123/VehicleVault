@@ -33,4 +33,5 @@ urlpatterns = [
     path('college/', views.College),
 
     path('student/', include('students.urls')),
+    path('test1/', include('test1.urls')),
 ]
