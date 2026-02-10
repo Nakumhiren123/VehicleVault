@@ -34,4 +34,5 @@ urlpatterns = [
 
     path('student/', include('students.urls')),
     path('test1/', include('test1.urls')),
+    path('employee/',include('employee.urls')),
 ]

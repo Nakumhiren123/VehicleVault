@@ -1,11 +1,8 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
 
-
-
-# 1️⃣ User Table
+# 1️ User Table
 
 class User(models.Model):
     userName = models.CharField(max_length=100)
@@ -23,7 +20,7 @@ class User(models.Model):
 
 
 
-# 2️⃣ Admin Table (OneToOne with User)
+# 2️ Admin Table (OneToOne with User)
 
 class Admin(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -38,7 +35,7 @@ class Admin(models.Model):
 
 
 
-# 3️⃣ Car Table
+# 3️ Car Table
 
 class Car(models.Model):
     carName = models.CharField(max_length=100)
@@ -58,7 +55,7 @@ class Car(models.Model):
 
 
 
-# 4️⃣ Accessory Table
+# 4️ Accessory Table
 
 class Accessory(models.Model):
     accessoryName = models.CharField(max_length=100)
@@ -74,7 +71,7 @@ class Accessory(models.Model):
 
 
 
-# 5️⃣ Car_Accessory_Mapping (FK + FK)
+# 5️ Car_Accessory_Mapping (FK + FK)
 
 class CarAccessoryMapping(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
@@ -87,7 +84,7 @@ class CarAccessoryMapping(models.Model):
 
 
 
-# 6️⃣ Comparison Table (FK User + FK Car)
+# 6️ Comparison Table (FK User + FK Car)
 
 class Comparison(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -100,7 +97,7 @@ class Comparison(models.Model):
 
 
 
-# 7️⃣ Review Table (FK User + FK Car)
+# 7️ Review Table (FK User + FK Car)
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -113,7 +110,7 @@ class Review(models.Model):
         db_table = "review"
 
 
-# 8️⃣ User Preference (OneToOne User)
+# 8 User Preference (OneToOne User)
 
 class UserPreference(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -126,7 +123,7 @@ class UserPreference(models.Model):
 
 
 
-# 9️⃣ Search History (FK User)
+# 9️ Search History (FK User)
 
 class SearchHistory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -138,7 +135,7 @@ class SearchHistory(models.Model):
 
 
 
-# 🔟 User Interaction (FK User + FK Car)
+# 10 User Interaction (FK User + FK Car)
 
 class UserInteraction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
