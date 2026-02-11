@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Employee
+from django.shortcuts import render,HttpResponse,redirect
+from .models import Employee,Department, EmployeeSkill
+from .forms import EmployeeForm,CourseForm, DepartmentForm, EmployeeSkillForm
 # Create your views here.
 
 def employeeList(request):
@@ -54,3 +55,48 @@ def employeeFilter(request):
     print('query 17',employee17)
     print('query 18',employee18)
     return render(request,'employee/employeeFilter.html')
+
+def createEmployee(request):
+    Employee.objects.create(name='ajay',age=23,salary=23000,post='HR',join_date='2022-01-01')
+    return HttpResponse('EMPLOYEE CREATED...')
+
+def createEmployeeWithForm(request):
+    print(request.method)
+    if request.method == "POST":
+        form = EmployeeForm(request.POST)
+        form.save()
+        return HttpResponse("EMPLOYEE CRATED...")
+
+    else:
+        form = EmployeeForm()
+        return render(request, "employee/createEmployeeForm.html",{"form":form})
+
+def createCourse(request):
+    if request.method == 'POST':
+        form = CourseForm(request.POST)
+        form.save()
+        return HttpResponse("COURSE CREATED")
+
+    else:
+        form = CourseForm()
+        return render(request, "employee/createCourse.html",{"form":form})
+
+def createDepartment(request):
+    if request.method == 'POST':
+        form = DepartmentForm(request.POST)
+        form.save()
+        return HttpResponse("DEPARTMENT CREATED")
+
+    else:
+        form = DepartmentForm()
+        return render(request, "employee/createDepartment.html", {"form": form})
+
+def createEmployeeSkill(request):
+    if request.method == 'POST':
+        form = EmployeeSkillForm(request.POST)
+        form.save()
+        return HttpResponse("EMPLOYEE SKILL CREATED")
+
+    else:
+        form = EmployeeSkillForm()
+        return render(request, "employee/createEmployeeSkill.html", {"form": form})
