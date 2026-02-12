@@ -65,7 +65,8 @@ def createEmployeeWithForm(request):
     if request.method == "POST":
         form = EmployeeForm(request.POST)
         form.save()
-        return HttpResponse("EMPLOYEE CRATED...")
+        # return HttpResponse("EMPLOYEE CRATED...")
+        return redirect("employeeList")
 
     else:
         form = EmployeeForm()
@@ -100,3 +101,23 @@ def createEmployeeSkill(request):
     else:
         form = EmployeeSkillForm()
         return render(request, "employee/createEmployeeSkill.html", {"form": form})
+
+def deleteEmployee(request, id):
+    print("id from url = ",id)
+    Employee.objects.filter(id=id).delete()
+    return redirect("employeeList")
+
+def filterEmployee(request):
+    print("filter employee called...")
+    employees = Employee.objects.filter(age__gte=25).values()
+    print("filter employee = ",employees)
+    return render(request,"employee/employeeList.html",{"employees":employees})
+
+def sortEmployee(request,id):
+    if id == 1:
+        employees = Employee.objects.order_by('id').values()
+    elif id == 2:
+        employees = Employee.objects.order_by('-id').values()
+    else:
+        employees = Employee.objects.all()
+    return render(request, 'employee/employeeList.html',{"employees":employees})
