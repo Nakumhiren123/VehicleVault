@@ -1,0 +1,57 @@
+<head>
+    <style>
+
+        table{
+            border: 1px solid blue;
+            width:80%;
+            background: yellow
+        }
+        th {
+            background: yellow;
+            color: red;
+        }
+
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+        body {
+            background : aqua
+        }
+
+    </style>
+</head>
+
+<h2>Service List</h2>
+
+<a href="{% url "createServicesForm" %}">CREATE SERVICE</a>
+
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Duration</th>
+    <th>Provider</th>
+    <th>Contact Email</th>
+    <th>contact Phone</th>
+    <th>Action</th>
+</tr>
+
+{% for service in services %}
+<tr>
+    <td>{{ service.id }}</td>
+    <td>{{ service.name }}</td>
+    <td>{{ service.price }}</td>
+    <td>{{service.duration}}Days</td>
+    <td>{{ service.provider }}</td>
+    <td>{{service.contact_email}}</td>
+    <td>{{service.contact_phone}}</td>
+    <td>
+        <a href ="{% url 'updateService' service.id %}">UPDATE</a>
+        <a href ="{% url 'deleteService' service.id %}">DELETE</a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
